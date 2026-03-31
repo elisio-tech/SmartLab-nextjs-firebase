@@ -3,25 +3,16 @@ import Checkbox from "@/app/components/form/input/Checkbox";
 import Input from "@/app/components/form/input/InputField";
 import Label from "@/app/components/form/Label";
 import Button from "@/app/components/ui/button/Button";
-import { ChevronLeftIcon, EyeCloseIcon, EyeIcon } from "@/app/icons";
 import Link from "next/link";
 import React, { useState } from "react";
 import AuthLayout from "../loyalt";
 
-export default function page() {
+export default function Page() {
   const [showPassword, setShowPassword] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   return (
     <AuthLayout>
       <div className="flex flex-col flex-1 lg:w-1/2 w-full">
-        <div className="w-full max-w-md sm:pt-10 mx-auto mb-5">
-          <Link
-            href="/"
-            className="inline-flex items-center text-sm text-gray-500 transition-colors hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
-          >
-            Back to dashboard
-          </Link>
-        </div>
         <div className="flex flex-col justify-center flex-1 w-full max-w-md mx-auto">
           <div>
             <div className="mb-5 sm:mb-8">
@@ -38,13 +29,13 @@ export default function page() {
                 <div className="space-y-6">
                   <div>
                     <Label>
-                      Email <span className="text-error-500">*</span>{" "}
+                      Email <span className="text-error-500">*</span>
                     </Label>
                     <Input placeholder="info@gmail.com" type="email" />
                   </div>
                   <div>
                     <Label>
-                      Password <span className="text-error-500">*</span>{" "}
+                      Password <span className="text-error-500">*</span>
                     </Label>
                     <div className="relative">
                       <Input
@@ -68,28 +59,16 @@ export default function page() {
                       href="/reset-password"
                       className="text-sm text-brand-500 hover:text-brand-600 dark:text-brand-400"
                     >
-                      Forgot password?
+                      Esqueceu a palavra-passe?
                     </Link>
                   </div>
                   <div>
                     <Button className="w-full" size="sm">
-                      Sign in
+                      Login
                     </Button>
                   </div>
                 </div>
               </form>
-
-              <div className="mt-5">
-                <p className="text-sm font-normal text-center text-gray-700 dark:text-gray-400 sm:text-start">
-                  Don&apos;t have an account? {""}
-                  <Link
-                    href="/signup"
-                    className="text-brand-500 hover:text-brand-600 dark:text-brand-400"
-                  >
-                    Sign Up
-                  </Link>
-                </p>
-              </div>
             </div>
           </div>
         </div>
