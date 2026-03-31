@@ -13,7 +13,7 @@ export default function RegisterForm() {
     try {
       await register(email, password);
       router.push("/dashboard");
-    } catch (error: any) {
+    } catch (error) {
       console.log("erro ao criar conta", error);
     }
   };
