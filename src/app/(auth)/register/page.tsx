@@ -1,5 +1,11 @@
+import RegisterForm from "@/app/components/auth/register-form";
 import React from "react";
 
 export default function register() {
-  return <div>register</div>;
+  return (
+    <div>
+      <p>register</p>
+      <RegisterForm />
+    </div>
+  );
 }
