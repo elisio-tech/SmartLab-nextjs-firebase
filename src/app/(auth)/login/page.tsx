@@ -1,5 +1,11 @@
+import LoginForm from "@/app/components/auth/login-form";
 import React from "react";
 
 export default function page() {
-  return <div>login</div>;
+  return (
+    <div>
+      <p>login</p>
+      <LoginForm />
+    </div>
+  );
 }
