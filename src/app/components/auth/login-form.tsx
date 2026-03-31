@@ -6,20 +6,46 @@ import { login } from "@/app/service/auth-service";
 import Link from "next/link";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import { loginShema } from "@/app/lib/validations/login";
+
+type errorType = {
+  email?: string;
+  password?: string;
+  auth?: string;
+};
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<errorType | null>(null);
   const router = useRouter();
 
-  const handleLogin = async (e: React.SubmitEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError(null);
+
+    const resulted = loginShema.safeParse({ email, password });
+    if (!resulted.success) {
+      const fieldErrors = resulted.error.flatten().fieldErrors;
+
+      setError({
+        email: fieldErrors.email?.[0],
+        password: fieldErrors.password?.[0],
+      });
+
+      return;
+    }
+
+    setLoading(true);
     try {
       await login(email, password);
       router.push("/dashboard");
-    } catch (error) {
-      console.log("Erro ao fazer login", error);
+    } catch (err) {
+      console.error("Erro ao fazer login", err);
+      setError({ auth: "Credenciais inválidas." });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -36,17 +62,20 @@ export default function LoginForm() {
             </p>
           </div>
           <div>
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-5"></div>
             <form onSubmit={handleLogin}>
               <div className="space-y-6">
                 <div>
+                  {error?.auth && (
+                    <p className="text-sm text-red-500 mb-4">{error.auth}</p>
+                  )}
                   <Label>
                     Email <span className="text-error-500">*</span>
                   </Label>
                   <Input
                     placeholder="info@gmail.com"
-                    type="email"
+                    error={!!error?.email}
                     onChange={(e) => setEmail(e.target.value)}
+                    hint={error?.email}
                   />
                 </div>
                 <div>
@@ -55,14 +84,12 @@ export default function LoginForm() {
                   </Label>
                   <div className="relative">
                     <Input
-                      type={showPassword ? "text" : "password"}
+                      type="password"
                       placeholder="Enter your password"
                       onChange={(e) => setPassword(e.target.value)}
+                      error={!!error?.password}
+                      hint={error?.password}
                     />
-                    <span
-                      onClick={() => setShowPassword(!showPassword)}
-                      className="absolute z-30 -translate-y-1/2 cursor-pointer right-4 top-1/2"
-                    ></span>
                   </div>
                 </div>
                 <div className="flex items-center justify-between">
@@ -77,8 +104,9 @@ export default function LoginForm() {
                   <Button
                     className="w-full bg-zinc-900 hover:bg-zinc-700"
                     size="sm"
+                    disabled={loading}
                   >
-                    Login
+                    {loading ? "Carregando..." : "Login"}
                   </Button>
                 </div>
               </div>
