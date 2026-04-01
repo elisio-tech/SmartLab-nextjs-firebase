@@ -7,12 +7,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { loginShema } from "@/app/lib/validations/login";
-
-type errorType = {
-  email?: string;
-  password?: string;
-  auth?: string;
-};
+import { errorType } from "@/app/types/erros";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
