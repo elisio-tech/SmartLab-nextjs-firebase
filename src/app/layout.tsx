@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque } from "next/font/google";
+import { Bricolage_Grotesque, Geist } from "next/font/google";
 import "./globals.css";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 export const metadata: Metadata = {
   title: "smartlab",
@@ -17,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-br" className={`h-full antialiased`}>
+    <html lang="pt-br" className={cn("h-full", "antialiased", "font-sans", geist.variable)}>
       <body className={`${bricolage.className} min-h-full flex flex-col`}>
         {children}
       </body>
