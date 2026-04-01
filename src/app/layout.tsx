@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Geist } from "next/font/google";
 import "./globals.css";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
   title: "smartlab",
@@ -20,9 +21,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-br" className={cn("h-full", "antialiased", "font-sans", geist.variable)}>
+    <html
+      lang="pt-br"
+      className={cn("h-full", "antialiased", "font-sans", geist.variable)}
+    >
       <body className={`${bricolage.className} min-h-full flex flex-col`}>
-        {children}
+        <TooltipProvider>{children}</TooltipProvider>
       </body>
     </html>
   );
