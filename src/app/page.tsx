@@ -15,5 +15,9 @@ export default function Page() {
 
   if (loading) return <>Carregando...</>;
 
-  return <div>Dashboard app</div>;
+  return (
+    <div>
+      <p>Dashboard</p>
+    </div>
+  );
 }

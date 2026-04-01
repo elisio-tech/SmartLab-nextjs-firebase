@@ -13,8 +13,6 @@ export async function getPatients() {
     }));
 }
 
-
-
 export async function createPatient(
   data: Omit<Patient, "id" | "createdAt">
 ) {
