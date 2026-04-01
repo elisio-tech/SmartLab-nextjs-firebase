@@ -43,7 +43,7 @@ export default function LoginForm() {
       router.push("/dashboard");
     } catch (err) {
       console.error("Erro ao fazer login", err);
-      setError({ auth: "Credenciais inválidas." });
+      setError({ auth: "Email ou palavra-passe inválidas." });
     } finally {
       setLoading(false);
     }
@@ -80,7 +80,7 @@ export default function LoginForm() {
                 </div>
                 <div>
                   <Label>
-                    Password <span className="text-error-500">*</span>
+                    Palavra-passe <span className="text-error-500">*</span>
                   </Label>
                   <div className="relative">
                     <Input
