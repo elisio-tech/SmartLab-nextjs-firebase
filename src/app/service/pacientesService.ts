@@ -1,4 +1,4 @@
-import { addDoc, collection, getDocs, serverTimestamp } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDocs, serverTimestamp } from "firebase/firestore";
 import { db } from "../lib/firebase"; 
 import { Patient } from "../types/patient";
 
@@ -24,3 +24,12 @@ export async function createPatient(
   return docRef.id;
 }
 
+
+export async function deletePatient(id: string) {
+  const docRef = doc(db, "smartlab-db", id)
+  try {
+    await deleteDoc(docRef)
+  } catch (error){
+    console.log("Erro ao deletar", error)
+  }
+}
