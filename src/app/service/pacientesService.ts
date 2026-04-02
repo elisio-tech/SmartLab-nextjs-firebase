@@ -2,14 +2,14 @@ import { addDoc, collection, getDocs, serverTimestamp } from "firebase/firestore
 import { db } from "../lib/firebase"; 
 import { Patient } from "../types/patient";
 
-const pacientsRef = collection(db, "patients")
+const pacientsRef = collection(db, "smartlab-db")
 
-export async function getPatients() {
+export async function getPatients(): Promise<Patient[]> {
     const snapshot = await getDocs(pacientsRef);
 
     return snapshot.docs.map((doc) => ({
         id: doc.id,
-        ...doc.data()
+        ...(doc.data() as Omit<Patient, "id">)
     }));
 }
 
@@ -21,6 +21,6 @@ export async function createPatient(
     createdAt: serverTimestamp(),
   });
 
-  return { id: docRef.id, ...data };
+  return docRef.id;
 }
 
