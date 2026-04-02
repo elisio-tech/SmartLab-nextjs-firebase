@@ -3,7 +3,7 @@
 import { useAuth } from "@/app/hooks/useAuth";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { usePatients } from "./hooks/usePatients";
+import { usePatients } from "./hooks/useGetPatients";
 
 export default function Page() {
   const { user, loading } = useAuth();
