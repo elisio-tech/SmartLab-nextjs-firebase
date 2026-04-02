@@ -31,19 +31,11 @@ export async function createPatient(data: Omit<Patient, "id" | "createdAt">) {
 }
 
 export async function updatePatient(id: string, data: Partial<Patient>) {
-  try {
-    const docRef = doc(db, "smartlab-db", id);
-    await updateDoc(docRef, { ...data, updatedAt: serverTimestamp() });
-  } catch (error) {
-    throw new Error(`Erro ao atualizar paciente: ${error}`);
-  }
+  const docRef = doc(db, "smartlab-db", id);
+  await updateDoc(docRef, { ...data, updatedAt: serverTimestamp() });
 }
 
 export async function deletePatient(id: string) {
-  try {
-    const docRef = doc(db, "smartlab-db", id);
-    await deleteDoc(docRef);
-  } catch (error) {
-    console.log("Erro ao deletar", error);
-  }
+  const docRef = doc(db, "smartlab-db", id);
+  await deleteDoc(docRef);
 }
