@@ -8,7 +8,12 @@ import {
   useGetPatients,
   useUpdatePatient,
 } from "./hooks/usePatients";
-import { useCreateUser, useGetUsers, useUpdateUser } from "./hooks/useUser";
+import {
+  useCreateUser,
+  useDeleteUser,
+  useGetUsers,
+  useUpdateUser,
+} from "./hooks/useUser";
 
 export default function Page() {
   const { user, loading } = useAuth();
@@ -18,7 +23,7 @@ export default function Page() {
   const { users, reload } = useGetUsers();
   const { update } = useUpdateUser(reload);
   const { create } = useCreateUser(reload);
-  const
+  const { remove } = useDeleteUser(reload);
 
   const router = useRouter();
 
@@ -30,8 +35,15 @@ export default function Page() {
 
   if (loading) return <>Carregando...</>;
 
-  const handleEdit = async (id: string) => {
-    await 
+  const handleEdit = async (userId: string) => {
+    try {
+      await remove(userId);
+      alert("Usuário removido!");
+    } catch (error: unknown) {
+      const message =
+        error instanceof Error ? error.message : "Erro ao remover usuário";
+      alert(message);
+    }
   };
 
   return (
@@ -44,7 +56,9 @@ export default function Page() {
             <p>{usr.name}</p>
             <span>{usr.age}</span>
             <h2>{usr.phone}</h2>
-            <button onClick={() => handleEdit(usr.id!)}>Salvar usario</button>
+            <button onClick={() => handleEdit("dhaduaudhagdau"!)}>
+              Apagar
+            </button>
           </div>
         ))}
       </div>
