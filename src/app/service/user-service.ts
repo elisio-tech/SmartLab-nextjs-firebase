@@ -34,7 +34,7 @@ export async function createUser(data: Omit<User, "id" | "createdAt">) {
 export async function getUserByID(uid: string): Promise<User | null> {
   const docRef = doc(db, "users", uid);
   const snapshot = await getDoc(docRef);
-  
+
   if (!snapshot.exists()) {
     return null;
   }
@@ -50,7 +50,7 @@ export async function updateUser(id: string, data: Partial<User>) {
   await updateDoc(docRef, { ...data, updatedAt: serverTimestamp() });
 }
 
-export async function deleteUser(id: string) {
+export async function deleteUser(id: string): Promise<void> {
   const docRef = doc(db, "users", id);
   await deleteDoc(docRef);
 }
