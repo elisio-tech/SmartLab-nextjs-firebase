@@ -4,7 +4,7 @@ import {
   deletePatient,
   getPatients,
   updatePatient,
-} from "../service/pacientesService";
+} from "../service/patient-service";
 import { Patient } from "../types/patient";
 
 // GET PATIENTS

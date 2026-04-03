@@ -10,7 +10,7 @@ import {
 import { db } from "../lib/firebase";
 import { Patient } from "../types/patient";
 
-const pacientsRef = collection(db, "smartlab-db");
+const pacientsRef = collection(db, "patients");
 
 export async function getPatients(): Promise<Patient[]> {
   const snapshot = await getDocs(pacientsRef);
@@ -31,11 +31,11 @@ export async function createPatient(data: Omit<Patient, "id" | "createdAt">) {
 }
 
 export async function updatePatient(id: string, data: Partial<Patient>) {
-  const docRef = doc(db, "smartlab-db", id);
+  const docRef = doc(db, "patients", id);
   await updateDoc(docRef, { ...data, updatedAt: serverTimestamp() });
 }
 
 export async function deletePatient(id: string) {
-  const docRef = doc(db, "smartlab-db", id);
+  const docRef = doc(db, "patients", id);
   await deleteDoc(docRef);
 }
