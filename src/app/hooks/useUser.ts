@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import { User } from "../types/user";
-import { getUsers, deleteUser, updateUser } from "../service/user-service";
+import {
+  getUsers,
+  deleteUser,
+  updateUser,
+  createUser,
+} from "../service/user-service";
 
 export function useGetUsers() {
   const [users, setUsers] = useState<User[]>([]);
@@ -22,8 +27,19 @@ export function useGetUsers() {
   return { users, loading, reload: load };
 }
 
+export function useCreateUser(reload?: () => void) {
+  async function create(data: Omit<User, "id" | "createdAt">) {
+    await createUser(data);
 
+    if (reload) {
+      reload();
+    }
+  }
 
+  return { create };
+}
+
+export function useGetUserByID(reload?: ()=> void) {}
 
 export function useUpdateUser(reload: () => void) {
   async function update(id: string, data: Partial<User>) {
