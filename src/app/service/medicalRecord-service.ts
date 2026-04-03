@@ -23,7 +23,7 @@ export async function getRecords(): Promise<MedicalRecord[]> {
 }
 
 export async function createRecord(
-  data: Omit<MedicalRecord, "id" | "createAt">,
+  data: Omit<MedicalRecord, "id" | "createdAt">,
 ) {
   const docRef = await addDoc(recordRef, {
     ...data,

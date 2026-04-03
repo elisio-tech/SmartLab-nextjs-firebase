@@ -12,15 +12,18 @@ import {
 import {
   useCreateUser,
   useDeleteUser,
+  useGetUserByID,
   useGetUsers,
   useUpdateUser,
 } from "./hooks/useUser";
 import { create } from "domain";
+import { useCreateRecords, useGetRecords } from "./hooks/useMedicalRecords";
+import { getUserByID } from "./service/user-service";
 
 export default function Page() {
   const { user, loading } = useAuth();
-  const { patients, reload } = useGetPatients();
-  const { create } = useCreatePatient(reload);
+  const { records, reload } = useGetRecords();
+  const { create } = useCreateRecords(reload);
   //const { update } = useUpdatePatient(reload);
 
   const router = useRouter();
@@ -35,10 +38,8 @@ export default function Page() {
 
   const handleEdit = async () => {
     await create({
-      name: "Maria Jose",
-      age: 35,
-      phone: "+33 943892712",
-      status: "pending",
+      patientId: "bM10VDjxP0qeRpB9qeEP",
+      notes: "Paracetamol para dor de cabeca",
     }).finally(() => {
       alert("Criado com sucesso");
     });
@@ -47,13 +48,11 @@ export default function Page() {
   return (
     <div>
       <p>Dashboard</p>
-      {patients.length}
+      {records.length}
       <div>
-        {patients.map((usr) => (
-          <div key={usr.id}>
-            <p>{usr.name}</p>
-            <span>{usr.age}</span>
-            <h2>{usr.phone}</h2>
+        {records.map((usr, i) => (
+          <div key={i}>
+            <p>{usr.notes}</p>
           </div>
         ))}
         <button onClick={() => handleEdit()}>Apagar</button>
