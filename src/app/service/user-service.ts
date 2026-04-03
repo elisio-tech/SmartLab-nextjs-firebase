@@ -52,5 +52,11 @@ export async function updateUser(id: string, data: Partial<User>) {
 
 export async function deleteUser(id: string): Promise<void> {
   const docRef = doc(db, "users", id);
+  const snapshot = await getDoc(docRef);
+
+  if (!snapshot.exists()) {
+    throw new Error("Usario nao existe!");
+  }
+
   await deleteDoc(docRef);
 }
