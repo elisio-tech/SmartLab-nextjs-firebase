@@ -36,7 +36,7 @@ export async function getUserByID(uid: string): Promise<User | null> {
   const snapshot = await getDoc(docRef);
 
   if (!snapshot.exists()) {
-    return null;
+    throw new Error("Usuario nao existe!");
   }
 
   return {

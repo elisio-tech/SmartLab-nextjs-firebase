@@ -4,6 +4,7 @@ import { useAuth } from "@/app/hooks/useAuth";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import {
+  useCreatePatient,
   useDeletePatient,
   useGetPatients,
   useUpdatePatient,
@@ -14,16 +15,13 @@ import {
   useGetUsers,
   useUpdateUser,
 } from "./hooks/useUser";
+import { create } from "domain";
 
 export default function Page() {
   const { user, loading } = useAuth();
-  //const { patients, reload } = useGetPatients();
-  // const { remove } = useDeletePatient(reload);
+  const { patients, reload } = useGetPatients();
+  const { create } = useCreatePatient(reload);
   //const { update } = useUpdatePatient(reload);
-  const { users, reload } = useGetUsers();
-  const { update } = useUpdateUser(reload);
-  const { create } = useCreateUser(reload);
-  const { remove } = useDeleteUser(reload);
 
   const router = useRouter();
 
@@ -35,32 +33,30 @@ export default function Page() {
 
   if (loading) return <>Carregando...</>;
 
-  const handleEdit = async (userId: string) => {
-    try {
-      await remove(userId);
-      alert("Usuário removido!");
-    } catch (error: unknown) {
-      const message =
-        error instanceof Error ? error.message : "Erro ao remover usuário";
-      alert(message);
-    }
+  const handleEdit = async () => {
+    await create({
+      name: "Maria Jose",
+      age: 35,
+      phone: "+33 943892712",
+      status: "pending",
+    }).finally(() => {
+      alert("Criado com sucesso");
+    });
   };
 
   return (
     <div>
       <p>Dashboard</p>
-      {users.length}
+      {patients.length}
       <div>
-        {users.map((usr) => (
+        {patients.map((usr) => (
           <div key={usr.id}>
             <p>{usr.name}</p>
             <span>{usr.age}</span>
             <h2>{usr.phone}</h2>
-            <button onClick={() => handleEdit("dhaduaudhagdau"!)}>
-              Apagar
-            </button>
           </div>
         ))}
+        <button onClick={() => handleEdit()}>Apagar</button>
       </div>
     </div>
   );
