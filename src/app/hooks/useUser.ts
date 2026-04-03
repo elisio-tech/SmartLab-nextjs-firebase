@@ -28,7 +28,7 @@ export function useGetUsers() {
   return { users, loading, reload: load };
 }
 
-export function useCreateUser(reload: () => void) {
+export function useCreateUser(reload?: () => void) {
   async function create(data: Omit<User, "id" | "createdAt">) {
     await createUser(data);
 
