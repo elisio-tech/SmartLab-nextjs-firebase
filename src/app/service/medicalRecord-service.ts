@@ -6,6 +6,7 @@ import {
   getDoc,
   getDocs,
   serverTimestamp,
+  updateDoc,
 } from "firebase/firestore";
 import { db } from "../lib/firebase";
 import { MedicalRecord } from "../types/medicalRecord";
@@ -29,6 +30,14 @@ export async function createRecord(
     createAt: serverTimestamp(),
   });
   return docRef.id;
+}
+
+export async function updateRecord(
+  recordID: string,
+  data: Partial<MedicalRecord>,
+) {
+  const docRef = doc(db, "records", recordID);
+  await updateDoc(docRef, { ...data, updateAt: serverTimestamp() });
 }
 
 export async function deleteRecord(recordID: string) {
