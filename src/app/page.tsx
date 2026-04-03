@@ -27,9 +27,10 @@ export default function Page() {
 
   async function handleEdit(id: string) {
     await update(id, {
-      name: "Nome Atualizado",
-      age: 35,
+      phone: "925278891",
     });
+    
+    alert("Atualizado");
   }
 
   return (
