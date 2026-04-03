@@ -5,6 +5,7 @@ import {
   deleteUser,
   updateUser,
   createUser,
+  getUserByID,
 } from "../service/user-service";
 
 export function useGetUsers() {
@@ -39,7 +40,21 @@ export function useCreateUser(reload?: () => void) {
   return { create };
 }
 
-export function useGetUserByID(reload?: ()=> void) {}
+export function useGetUserByID() {
+  const [loading, setLoading] = useState(false);
+
+  async function getByID(id: string): Promise<User | null> {
+    setLoading(true);
+    try {
+      const user = await getUserByID(id);
+      return user;
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  return { getByID, loading };
+}
 
 export function useUpdateUser(reload: () => void) {
   async function update(id: string, data: Partial<User>) {
