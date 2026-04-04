@@ -35,7 +35,7 @@ export default function LoginForm() {
     setLoading(true);
     try {
       await login(email, password);
-      router.push("/dashboard");
+      router.push("/");
     } catch (err) {
       console.error("Erro ao fazer login", err);
       setError({ auth: "Email ou palavra-passe inválidas." });

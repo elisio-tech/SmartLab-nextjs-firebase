@@ -3,8 +3,7 @@ import { Spinner } from "@/components/ui/spinner";
 import { useAuth } from "@/app/hooks/useAuth";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { Sidebar } from "@/components/ui/sidebar";
-import AppHeader from "./components/Header";
+import AppSidebar from "./components/Sidebar";
 
 export default function Page() {
   const { user, loading } = useAuth();
@@ -29,7 +28,7 @@ export default function Page() {
 
   return (
     <div>
-      <AppHeader />
+      <AppSidebar />
     </div>
   );
 }
