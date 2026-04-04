@@ -1,18 +1,13 @@
 "use client";
-
+import { Spinner } from "@/components/ui/spinner";
 import { useAuth } from "@/app/hooks/useAuth";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import {
-  useCreateAppointment,
-  useGetAppointments,
-} from "./hooks/useAppointments";
+import { Sidebar } from "@/components/ui/sidebar";
+import AppHeader from "./components/Header";
 
 export default function Page() {
   const { user, loading } = useAuth();
-  const { appointments, reload } = useGetAppointments();
-  const { create } = useCreateAppointment(reload);
-
   const router = useRouter();
 
   useEffect(() => {
@@ -21,31 +16,20 @@ export default function Page() {
     }
   }, [user, loading, router]);
 
-  if (loading) return <>Carregando...</>;
-
-  const handleEdit = async () => {
-    await create({
-      patientId: "bM10VDjxP0qeRpB9qeEP",
-      doctorId: "PbZObKfTUhZpEXopG3kU",
-      status: "pending",
-      date: new Date(),
-    }).finally(() => {
-      alert("Criado com sucesso");
-    });
-  };
+  if (loading) {
+    return (
+      <div className="grid place-items-center h-screen w-full">
+        <div className="flex justify-center items-center gap-4">
+          <Spinner />
+          <p>Carregando</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div>
-      <p>Dashboard</p>
-      {appointments.length}
-      <div>
-        {appointments.map((usr, i) => (
-          <div key={i}>
-            <p>{usr.status}</p>
-          </div>
-        ))}
-        <button onClick={() => handleEdit()}>Apagar</button>
-      </div>
+      <AppHeader />
     </div>
   );
 }

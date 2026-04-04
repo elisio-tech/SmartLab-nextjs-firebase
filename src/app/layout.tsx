@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Geist } from "next/font/google";
 import "./globals.css";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
@@ -26,7 +25,7 @@ export default function RootLayout({
       className={cn("h-full", "antialiased", "font-sans", geist.variable)}
     >
       <body className={`${bricolage.className} min-h-full flex flex-col`}>
-        <TooltipProvider>{children}</TooltipProvider>
+        <div>{children}</div>
       </body>
     </html>
   );
