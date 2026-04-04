@@ -20,3 +20,18 @@ export const navLinks = [
     ],
   },
 ];
+
+export const navLinkAdmin = [
+  {
+    name: "Manager",
+    path: "/",
+  },
+  {
+    name: "Rules",
+    path: "/",
+  },
+  {
+    name: "Settings",
+    path: "/",
+  },
+];
