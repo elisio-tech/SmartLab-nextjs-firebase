@@ -3,8 +3,6 @@ import { Spinner } from "@/components/ui/spinner";
 import { useAuth } from "@/app/hooks/useAuth";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import AppSidebar from "./components/Sidebar";
-import { MedicalRecordService } from "./service/records/recordService";
 import { useRecords } from "./hooks/useRecords";
 
 export default function Page() {
