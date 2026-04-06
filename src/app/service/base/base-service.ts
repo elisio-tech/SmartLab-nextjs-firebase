@@ -6,9 +6,11 @@ import {
   doc,
   DocumentData,
   DocumentSnapshot,
+  getDoc,
   getDocs,
   serverTimestamp,
   Timestamp,
+  updateDoc,
 } from "firebase/firestore";
 
 export interface BaseEntity {
@@ -39,6 +41,19 @@ export abstract class BaseService<T extends BaseEntity> {
     }
   }
 
+  async getByID(id: string): Promise<T | null> {
+    try {
+      const docRef = doc(db, this.collectionName, id);
+      const snapshot = await getDoc(docRef);
+
+      if (!snapshot.exists()) return null;
+
+      return this.mapDocumentToEntity(snapshot);
+    } catch (error) {
+      return this.handleError(error, "getByID");
+    }
+  }
+
   async create(data: Omit<T, "id" | "createdAt">): Promise<string> {
     try {
       const docRef = await addDoc(this.collectionRef, {
@@ -51,8 +66,18 @@ export abstract class BaseService<T extends BaseEntity> {
     }
   }
 
-  async update(id: string, data: Partial<T>): Promise<void> {}
-  
+  async update(id: string, data: Partial<T>): Promise<void> {
+    try {
+      const docRef = doc(db, this.collectionName, id);
+      await updateDoc(docRef, {
+        ...data,
+        updatedAt: serverTimestamp(),
+      });
+    } catch (error) {
+      this.handleError(error, "update");
+    }
+  }
+
   async delete(id: string): Promise<void> {
     try {
       const docRef = doc(db, this.collectionName, id);
