@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Bricolage_Grotesque, Geist } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { Sidebar15 } from "./components/sidebar/Sidebar";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -25,6 +26,7 @@ export default function RootLayout({
       className={cn("h-full", "antialiased", "font-sans", geist.variable)}
     >
       <body className={`${bricolage.className} min-h-full flex flex-col`}>
+        <Sidebar15 />
         <div>{children}</div>
       </body>
     </html>
