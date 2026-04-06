@@ -1,11 +1,13 @@
 import { db } from "@/app/lib/firebase";
 import {
+  addDoc,
   CollectionReference,
   deleteDoc,
   doc,
   DocumentData,
   DocumentSnapshot,
   getDocs,
+  serverTimestamp,
   Timestamp,
 } from "firebase/firestore";
 
@@ -31,15 +33,26 @@ export abstract class BaseService<T extends BaseEntity> {
   async getAll(): Promise<T[]> {
     try {
       const snapshot = await getDocs(this.collectionRef);
-      return snapshot.docs.map(this.mapDocumentToEntity);
+      return snapshot.docs.map((doc) => this.mapDocumentToEntity(doc));
     } catch (error) {
       return this.handleError(error, "getAll");
     }
   }
 
   async create(data: Omit<T, "id" | "createdAt">): Promise<string> {
-
+    try {
+      const docRef = await addDoc(this.collectionRef, {
+        ...data,
+        createdAt: serverTimestamp(),
+      });
+      return docRef.id;
+    } catch (error) {
+      this.handleError(error, "create");
+    }
   }
+
+  async update(id: string, data: Partial<T>): Promise<void> {}
+  
   async delete(id: string): Promise<void> {
     try {
       const docRef = doc(db, this.collectionName, id);
