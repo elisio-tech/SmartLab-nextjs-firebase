@@ -37,6 +37,9 @@ export abstract class BaseService<T extends BaseEntity> {
     }
   }
 
+  async create(data: Omit<T, "id" | "createdAt">): Promise<string> {
+
+  }
   async delete(id: string): Promise<void> {
     try {
       const docRef = doc(db, this.collectionName, id);
