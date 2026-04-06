@@ -4,10 +4,13 @@ import { useAuth } from "@/app/hooks/useAuth";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import AppSidebar from "./components/Sidebar";
+import { MedicalRecordService } from "./service/records/recordService";
+import { useRecords } from "./hooks/useRecords";
 
 export default function Page() {
   const { user, loading } = useAuth();
   const router = useRouter();
+  const { records } = useRecords();
 
   useEffect(() => {
     if (!loading && !user) {
@@ -28,7 +31,14 @@ export default function Page() {
 
   return (
     <div>
-      <AppSidebar />
+      <h3>Records</h3>
+      <div>
+        {records.map((record, i) => (
+          <div key={i}>
+            <h3>{record.patientName}</h3>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
