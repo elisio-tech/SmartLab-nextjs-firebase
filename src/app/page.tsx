@@ -31,7 +31,7 @@ export default function Page() {
 
   return (
     <div>
-      <h3>Records</h3>
+      <h3></h3>
       <div>
         {records.map((record, i) => (
           <div key={i}>
