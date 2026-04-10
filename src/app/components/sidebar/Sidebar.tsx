@@ -72,7 +72,7 @@ const IconButton: React.FC<IconButtonProps> = ({ Icon }) => (
 );
 
 const LeftSidebar: React.FC = () => (
-  <div className="left">
+  <div className="left border ">
     <Image src={"/logo/lg.svg"} alt="Logo" width={32} height={32} />
     {leftTopItems.map((Icon, index) => (
       <IconButton key={index} Icon={Icon} />
@@ -88,7 +88,7 @@ const LeftSidebar: React.FC = () => (
 const SidebarHeader: React.FC = () => (
   <div className="header">
     <div>
-      <h2>Untitled UI</h2>
+      <h2>Dr, John Dove</h2>
       <h3>store.untitledui.com</h3>
     </div>
     <ChevronsUpDown size={16} className="text-gray-400" />
@@ -134,7 +134,7 @@ const Navigation: React.FC = () => (
 );
 
 const RightSidebar: React.FC = () => (
-  <div className="right">
+  <div className="right ">
     <div className="right-inner">
       <SidebarHeader />
       <Navigation />
