@@ -1,9 +1,22 @@
 import React from "react";
+import { Search } from "lucide-react";
 
 export default function Header() {
   return (
     <section>
-      <div>Header</div>
+      <nav>
+        <div>
+          <h1>Dasboard</h1>
+        </div>
+        <div>
+          <button>
+            <Search />
+          </button>
+          <div>
+            <p>AM</p>
+          </div>
+        </div>
+      </nav>
     </section>
   );
 }
