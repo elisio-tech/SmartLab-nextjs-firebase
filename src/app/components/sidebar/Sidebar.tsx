@@ -20,10 +20,11 @@ import {
   LucideIcon,
 } from "lucide-react";
 import "./sidebar.css";
+import { logOut } from "@/app/service/auth-service";
 
 interface SubmenuItem {
   label: string;
-  count: number;
+  count: string;
 }
 
 interface NavItemData {
@@ -51,9 +52,9 @@ const navItems: NavItemData[] = [
     label: "Messages",
     actionIcon: Plus,
     submenu: [
-      { label: "Drafts", count: 1 },
-      { label: "Scheduled", count: 4 },
-      { label: "Published", count: 8 },
+      { label: "Drafts", count: "bg-red-500" },
+      { label: "Scheduled", count: "bg-orange-500" },
+      { label: "Published", count: "bg-blue-500" },
     ],
   },
   { icon: ImageIcon, label: "Images" },
@@ -95,11 +96,14 @@ const SidebarHeader: React.FC = () => (
 );
 
 const Submenu: React.FC<SubmenuProps> = ({ items }) => (
-  <ul className="submenu">
+  <ul className="flex flex-col gap-4 mt-2 ml-6 mb-4">
     {items.map((item) => (
-      <li key={item.label}>
+      <li
+        key={item.label}
+        className="flex items-center gap-4 text-sm cursor-pointer"
+      >
+        <div className={`${item.count} w-2 h-2 rounded-full`} />
         {item.label}
-        <span className="badge">{item.count}</span>
       </li>
     ))}
   </ul>
