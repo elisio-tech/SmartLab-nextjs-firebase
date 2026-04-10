@@ -19,8 +19,8 @@ import {
   ChevronsUpDown,
   LucideIcon,
 } from "lucide-react";
+import { Award } from "iconsax-react-nativejs";
 import "./sidebar.css";
-import { logOut } from "@/app/service/auth-service";
 
 interface SubmenuItem {
   label: string;
@@ -40,27 +40,25 @@ interface IconButtonProps {
 
 // --- DADOS ---
 
-const leftTopItems: LucideIcon[] = [Home, Heart, AtSign, MessageCircle, Plus];
+const leftTopItems: LucideIcon[] = [Home, Heart, Award, MessageCircle, Plus];
 const leftBottomItems: LucideIcon[] = [Settings, ExternalLink];
 
 const navItems: NavItemData[] = [
   { icon: LayoutDashboard, label: "Dashboard" },
-  { icon: Package, label: "Products" },
-  { icon: Users, label: "Customers" },
+  { icon: Package, label: "My Patients" },
+  { icon: Users, label: "Medical Records" },
   {
     icon: Mail,
-    label: "Messages",
+    label: "Appointments",
     actionIcon: Plus,
     submenu: [
-      { label: "Drafts", count: "bg-red-500" },
-      { label: "Scheduled", count: "bg-orange-500" },
-      { label: "Published", count: "bg-blue-500" },
+      { label: "Notifications", count: "bg-red-500" },
+      { label: "Reports", count: "bg-green-500" },
+      { label: "Published", count: "bg-yellow-500" },
     ],
   },
-  { icon: ImageIcon, label: "Images" },
+  { icon: ImageIcon, label: "Patient Progress" },
   { icon: Network, label: "Network" },
-  { icon: Database, label: "Inventory" },
-  { icon: Hash, label: "Hashtags" },
 ];
 
 // --- COMPONENTES ---
