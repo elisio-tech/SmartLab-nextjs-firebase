@@ -4,6 +4,7 @@ import { useAuth } from "@/app/hooks/useAuth";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useRecords } from "./hooks/useRecords";
+import { logOut } from "./service/auth-service";
 
 export default function Page() {
   const { user, loading } = useAuth();
@@ -27,8 +28,13 @@ export default function Page() {
     );
   }
 
+  const handle = async () => {
+    await logOut();
+  };
+
   return (
     <div>
+      <button onClick={() => handle()}>Sair</button>
       <h3></h3>
       <div>
         {records.map((record, i) => (
