@@ -1,18 +1,13 @@
 "use client";
-import Input from "@/app/components/form/input/InputField";
-import Label from "@/app/components/form/Label";
-import Button from "@/app/components/ui/button/Button";
+import Input from "@/components/form/input/InputField";
+import Label from "@/components/form/Label";
+import Button from "@/components/ui/button/Button";
 import { login } from "@/app/service/auth-service";
 import Link from "next/link";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { loginShema } from "@/app/lib/validations/login";
-
-type errorType = {
-  email?: string;
-  password?: string;
-  auth?: string;
-};
+import { loginShema } from "@/lib/validations/login";
+import { errorType } from "@/types/erros";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");

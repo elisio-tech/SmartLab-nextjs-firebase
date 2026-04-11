@@ -1,9 +1,9 @@
 "use client";
-import { Spinner } from "@/components/ui/spinner";
-import { useAuth } from "@/app/hooks/useAuth";
+
+import { useAuth } from "@/hooks/useAuth";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { useRecords } from "./hooks/useRecords";
+import { useRecords } from "@/hooks/useRecords";
 import { logOut } from "./service/auth-service";
 
 export default function Page() {
@@ -21,7 +21,6 @@ export default function Page() {
     return (
       <div className="grid place-items-center h-screen w-full">
         <div className="flex justify-center items-center gap-4">
-          <Spinner />
           <p>Carregando</p>
         </div>
       </div>
