@@ -3,7 +3,7 @@ import { Search } from "lucide-react";
 
 export default function Header() {
   return (
-    <section>
+    <section className="fixed right-0 w-full">
       <nav>
         <div>
           <h1>Dasboard</h1>
