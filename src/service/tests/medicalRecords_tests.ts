@@ -1,7 +1,7 @@
 import { collection } from "firebase/firestore";
 import { db } from "@/lib/firebase";
-import { BaseService } from "@/app/service/base/base-service";
-import { MedicalRecord } from "@/app/types/medicalRecord";
+import { BaseService } from "@/service/base/base-service";
+import { MedicalRecord } from "@/types/medicalRecord";
 
 class MedicalRecordService extends BaseService<MedicalRecord> {
   protected collectionName = "records";
