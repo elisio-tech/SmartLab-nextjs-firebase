@@ -40,7 +40,7 @@ interface IconButtonProps {
 
 // --- DADOS ---
 
-const leftTopItems: LucideIcon[] = [Home, Heart, Award, MessageCircle, Plus];
+const leftTopItems: LucideIcon[] = [Home, Heart, Hash, MessageCircle, Plus];
 const leftBottomItems: LucideIcon[] = [Settings, ExternalLink];
 
 const navItems: NavItemData[] = [
@@ -70,7 +70,7 @@ const IconButton: React.FC<IconButtonProps> = ({ Icon }) => (
 );
 
 const LeftSidebar: React.FC = () => (
-  <div className="left border ">
+  <div className="left border-r ">
     <Image src={"/logo/lg.svg"} alt="Logo" width={32} height={32} />
     {leftTopItems.map((Icon, index) => (
       <IconButton key={index} Icon={Icon} />
