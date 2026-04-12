@@ -1,4 +1,4 @@
-import { Sidebar15 } from "@/components/sidebar/Sidebar";
+import Sidebar from "@/components/Sidebar";
 import React from "react";
 
 export default function Layout({
@@ -8,7 +8,7 @@ export default function Layout({
 }>) {
   return (
     <div>
-      <Sidebar15 />
+      <Sidebar />
       {children}
     </div>
   );
