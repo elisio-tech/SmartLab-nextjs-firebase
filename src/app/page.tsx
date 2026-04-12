@@ -4,7 +4,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useRecords } from "@/hooks/useRecords";
-import { logOut } from "./service/auth-service";
+import { logOut } from "@/service/auth-service";
 
 export default function Page() {
   const { user, loading } = useAuth();
