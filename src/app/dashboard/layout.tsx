@@ -1,3 +1,4 @@
+import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import React from "react";
 
@@ -9,6 +10,7 @@ export default function Layout({
   return (
     <div>
       <Sidebar />
+      <Header />
       {children}
     </div>
   );
