@@ -9,6 +9,7 @@ import {
 } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import Sidebar from "@/components/Sidebar";
 
 export const metadata: Metadata = {
   title: "smartlab",
@@ -27,6 +28,7 @@ export default function RootLayout({
   return (
     <html lang="pt-br" className={cn("h-full", "antialiased", "font-sans")}>
       <body className={`${bricolage.className} min-h-full flex flex-col`}>
+        <Sidebar />
         <div>{children}</div>
       </body>
     </html>

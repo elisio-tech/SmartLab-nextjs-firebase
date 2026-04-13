@@ -7,11 +7,5 @@ export default function Layout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <div>
-      <Sidebar />
-      <Header />
-      {children}
-    </div>
-  );
+  return <div>{children}</div>;
 }
