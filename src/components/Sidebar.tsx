@@ -73,8 +73,8 @@ export default function Sidebar() {
   };
 
   return (
-    <div className="fixed top-0 left-0 bottom-0 w-72  border-r">
-      <nav className="h-full flex flex-col justify-between px-6 ">
+    <div className="fixed top-0 left-0 bottom-0 w-64">
+      <nav className="h-full flex flex-col justify-between px-4">
         <div>
           <Link href={"/dashboard"}>
             <Image
@@ -126,7 +126,7 @@ export default function Sidebar() {
             className="filter brightness-0 opacity-70 group-hover:invert-[0.2] group-hover:sepia-[1] group-hover:saturate-[5000%] group-hover:hue-rotate-[350deg]"
             alt="LogOut"
           />
-          <span className="text-sm font-medium">Sair</span>
+          <span className="text-sm font-medium">Encerrar Sessao</span>
         </button>
       </nav>
     </div>
