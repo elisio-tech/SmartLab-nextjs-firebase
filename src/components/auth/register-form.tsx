@@ -1,5 +1,5 @@
 "use client";
-import { register } from "@/app/service/auth-service";
+import { register } from "@/service/auth-service";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 
