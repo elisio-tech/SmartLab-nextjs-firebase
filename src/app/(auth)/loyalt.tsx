@@ -1,4 +1,4 @@
-import GridShape from "@/app/components/common/GridShape";
+import GridShape from "@/components/common/GridShape";
 import React from "react";
 
 export default function AuthLayout({
