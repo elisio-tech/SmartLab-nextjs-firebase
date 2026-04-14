@@ -123,7 +123,7 @@ export default function Sidebar() {
             src="/icons/logOut.svg"
             width={22}
             height={22}
-            className="filter brightness-0 opacity-70 group-hover:invert-[0.2] group-hover:sepia-[1] group-hover:saturate-[5000%] group-hover:hue-rotate-[350deg]"
+            className="filter brightness-0 opacity-70 group-hover:invert-[0.2] group-hover:sepia-[1]"
             alt="LogOut"
           />
           <span className="text-sm font-medium">Encerrar Sessao</span>
