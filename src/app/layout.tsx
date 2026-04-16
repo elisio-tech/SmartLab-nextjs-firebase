@@ -19,9 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br" className={cn("h-full", "antialiased", "font-sans")}>
-      <body
-        className={`${bricolage.className} min-h-full flex flex-col bg-zinc-100`}
-      >
+      <body className={`${bricolage.className} min-h-full flex flex-col`}>
         <div>{children}</div>
       </body>
     </html>

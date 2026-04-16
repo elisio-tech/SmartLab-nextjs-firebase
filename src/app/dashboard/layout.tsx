@@ -10,6 +10,7 @@ export default function Layout({
   return (
     <div>
       <Sidebar />
+      <Header />
       {children}
     </div>
   );
