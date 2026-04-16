@@ -2,17 +2,17 @@ export const otherMenu = [
   {
     name: "Dashboard",
     path: "/dashboard",
-    icon: "/icons/plane.png",
+    icon: "/icons/award.png",
   },
   {
     name: "Pacientes",
     path: "/dashboard/patients",
-    icon: "/icons/calendar.png",
+    icon: "/icons/cal.png",
   },
   {
     name: "Exames",
     path: "/dashboard/exams",
-    icon: "/icons/drop.png",
+    icon: "/icons/drop-linear.png",
   },
 ];
 
@@ -20,27 +20,27 @@ export const menu = [
   {
     name: "Dashboard",
     path: "/dashboard",
-    icon: "/icons/grid.png",
+    icon: "/icons/grid-linear.png",
   },
   {
     name: "Pacientes",
     path: "/dashboard/patients",
-    icon: "/icons/shild.png",
+    icon: "/icons/lock.png",
   },
   {
     name: "Exames",
     path: "/dashboard/exams",
-    icon: "/icons/clip.png",
+    icon: "/icons/archive.png",
   },
   {
     name: "Consultas",
     path: "/dashboad/consulting",
-    icon: "/icons/reception.png",
+    icon: "/icons/note.png",
   },
   {
     name: "Relatórios Gerais",
     path: "/dashboard/records",
-    icon: "/icons/folder_1.png",
+    icon: "/icons/folder-linear.png",
   },
 ];
 
@@ -48,11 +48,11 @@ export const footer = [
   {
     name: "Help center",
     path: "/dashboard",
-    icon: "/icons/raio-x.png",
+    icon: "/icons/call.png",
   },
   {
     name: "Settings",
     path: "/dashboard/patients",
-    icon: "/icons/set.png",
+    icon: "/icons/sett.png",
   },
 ];
