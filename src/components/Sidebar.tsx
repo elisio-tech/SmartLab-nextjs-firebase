@@ -33,7 +33,7 @@ export default function Sidebar() {
       <nav className="flex flex-col justify-between items-center h-screen py-4 px-3">
         <div className="flex flex-col items-center gap-6">
           <Link href="/dashboard" className="hover:scale-105 transition">
-            <Image src="/logo/logo2.svg" alt="logo" width={34} height={34} />
+            <Image src="/logo/logo_01.png" alt="logo" width={34} height={34} />
           </Link>
 
           <div className="w-6 h-px bg-gray-300" />
@@ -74,7 +74,6 @@ export default function Sidebar() {
           </div>
         </div>
 
-        {/* FOOTER */}
         <div className="flex flex-col items-center gap-3">
           {footer.map((item, i) => (
             <Link
@@ -94,7 +93,6 @@ export default function Sidebar() {
             </Link>
           ))}
 
-          {/* LOGOUT */}
           <button
             onClick={handleLogOut}
             className="w-10 h-10 flex items-center justify-center rounded-lg bg-orange-500 hover:bg-orange-600 transition shadow-sm"
