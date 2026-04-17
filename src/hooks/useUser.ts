@@ -6,7 +6,7 @@ import {
   updateUser,
   createUser,
   getUserByID,
-} from "../app/service/user-service";
+} from "@/service/user-service";
 
 export function useGetUsers() {
   const [users, setUsers] = useState<User[]>([]);

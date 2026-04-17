@@ -19,7 +19,7 @@ export default function Header() {
   return (
     <header className="fixed top-0 right-0 left-16 border-b py-4">
       <nav className="flex justify-between items-center mx-8">
-        <h2>Dashboard</h2>
+        <h2 className="">Dashboard</h2>
         <div className="flex justify-center items-center gap-8">
           <div className="flex items-center gap-8">
             {menu.map((item, i) => (

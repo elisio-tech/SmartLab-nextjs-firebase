@@ -31,7 +31,7 @@ export default function Sidebar() {
   return (
     <aside className="fixed top-0 left-0 bottom-0 z-10 border-r ">
       <nav className="flex flex-col justify-between items-center h-screen py-4 px-3">
-        <div className="flex flex-col items-center gap-6">
+        <div className="flex flex-col items-center gap-8">
           <Link href="/dashboard" className="hover:scale-105 transition">
             <Image src="/logo/logo_01.png" alt="logo" width={34} height={34} />
           </Link>
