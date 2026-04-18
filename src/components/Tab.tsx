@@ -7,7 +7,7 @@ export default function Tab() {
   const [active, setActive] = useState("Overview");
 
   return (
-    <div className="flex items-center justify-between border-zinc-200 pb-3 mx-1">
+    <div className="flex items-center justify-between border-zinc-200 pb-3 mx-44">
       <div className="flex items-center gap-4">
         <div className="flex items-center gap-2 bg-zinc-100 p-1 rounded-sm">
           {tabs.map((tab) => (
