@@ -4,8 +4,8 @@ import React from "react";
 
 export default function Header() {
   return (
-    <header className="fixed top-0 left-72 right-0 z-50">
-      <nav className="mx-4 px-6 h-20 flex items-center justify-between">
+    <header className="fixed top-0 left-64 right-0 z-50 border-b">
+      <nav className="mx-4 px-6 h-16 flex items-center justify-between">
         <h3>Reports</h3>
 
         <div className="flex items-center gap-4">
