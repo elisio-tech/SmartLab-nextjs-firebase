@@ -18,8 +18,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-br" className={cn("h-full", "antialiased", "font-sans")}>
-      <body className={`${jakartaFont.className} min-h-full flex flex-col`}>
+    <html lang="pt-br" className={cn("h-full", "antialiased", "font-sans ")}>
+      <body
+        className={`${jakartaFont.className} min-h-full flex flex-col bg-gray-50`}
+      >
         <div>{children}</div>
       </body>
     </html>
