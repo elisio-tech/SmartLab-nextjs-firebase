@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="pt-br" className={cn("h-full", "antialiased", "font-sans ")}>
       <body
-        className={`${jakartaFont.className} min-h-full flex flex-col bg-gray-50`}
+        className={`${jakartaFont.className} min-h-full flex flex-col bg-gray-0`}
       >
         <div>{children}</div>
       </body>
