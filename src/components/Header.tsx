@@ -12,16 +12,7 @@ export default function Header() {
       </div>
 
       <div className="flex items-center gap-3">
-        <button className="p-2 rounded-lg hover:bg-gray-100 transition">
-          <Image
-            src="/icons/search-normal.png"
-            width={20}
-            height={20}
-            alt="search"
-          />
-        </button>
-
-        <button className="relative p-2 rounded-lg hover:bg-gray-100 transition">
+        <button className="relative p-2 rounded-lg bg-gray-100 transition">
           <Image
             src="/icons/nott.png"
             width={20}
@@ -29,12 +20,14 @@ export default function Header() {
             alt="notifications"
           />
 
-          <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+          <div className="absolute -top-1 -right-1 w-4 h-4 bg-orange-500 rounded-full text-[8px] text-white flex justify-center items-center">
+            <span>1</span>
+          </div>
         </button>
 
         <div className="w-px h-4 bg-gray-200 mx-2" />
 
-        <div className="flex items-center gap-3 pl-2  py-1 rounded-sm]">
+        <div className="flex items-center gap-4 pl-2  py-1 rounded-sm">
           <Image
             src="/users/user.jpg"
             width={36}
@@ -44,7 +37,7 @@ export default function Header() {
           />
 
           <div className="hidden sm:flex flex-col leading-tight">
-            <span className="text-sm font-medium text-gray-800">
+            <span className="text-md font-medium text-gray-800">
               Robert Fox
             </span>
             <span className="text-xs text-gray-400">robert.fox@gmail.com</span>
