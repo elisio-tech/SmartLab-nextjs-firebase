@@ -8,6 +8,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { loginShema } from "@/lib/validations/login";
 import { errorType } from "@/types/erros";
+import Image from "next/image";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
@@ -48,10 +49,15 @@ export default function LoginForm() {
     <div className="flex flex-col flex-1 lg:w-1/2 w-full">
       <div className="flex flex-col justify-center flex-1 w-full max-w-md mx-auto">
         <div>
-          <div className="mb-5 sm:mb-8">
-            <h1 className="mb-2 font-semibold text-gray-800 text-title-sm dark:text-white/90 sm:text-title-md">
-              Login
-            </h1>
+          <div className="mb-5 sm:mb-8 text-center flex flex-col justify-center items-center">
+            <Image
+              src="/logo/logo.png"
+              width={72}
+              height={72}
+              alt="logo"
+              className="mb-2"
+            />
+            <h1 className="font-bold text-2xl">Welcome back</h1>
             <p className="text-sm text-gray-500 dark:text-gray-400">
               Entrar com email e palavra-passe!
             </p>
