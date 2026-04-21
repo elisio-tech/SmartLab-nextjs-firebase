@@ -7,7 +7,7 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-64 right-0 h-16 bg-white border-b flex items-center justify-between px-6 z-10">
       <div>
-        <h1 className="text-lg font-semibold text-gray-800">Dashboard</h1>
+        <h1 className="text-lg  text-gray-800">Dashboard</h1>
         <p className="text-xs text-gray-400">Welcome back 👋</p>
       </div>
 
