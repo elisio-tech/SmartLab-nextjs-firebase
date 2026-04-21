@@ -30,7 +30,9 @@ export default function Sidebar() {
       <div>
         <div className="h-16 flex items-center px-6 border-b">
           <Image src="/logo/logo.png" width={32} height={32} alt="logo" />
-          <span className="ml-2 font-semibold text-gray-800">Orbital</span>
+          <span className="ml-2 font-semibold text-gray-800 uppercase">
+            Orbital
+          </span>
         </div>
 
         <div className="px-4 py-6">
@@ -47,8 +49,8 @@ export default function Sidebar() {
                   className={`flex items-center gap-3 px-3 py-3 rounded-lg transition
                     ${
                       isActive
-                        ? "bg-gray-1 text-black font-medium"
-                        : "text-gray-600 hover:bg-gray-50"
+                        ? "text-gray-900 font-medium"
+                        : "text-gray-600 hover:bg-gray-100"
                     }`}
                 >
                   <Image
@@ -57,7 +59,7 @@ export default function Sidebar() {
                     width={20}
                     height={20}
                   />
-                  <span className="text-sm">{item.label}</span>
+                  <span className="text-md">{item.label}</span>
                 </Link>
               );
             })}
@@ -77,7 +79,7 @@ export default function Sidebar() {
               width={20}
               height={20}
             />
-            <span className="text-sm">Settings</span>
+            <span className="text-md">Settings</span>
           </Link>
 
           <button
@@ -90,7 +92,7 @@ export default function Sidebar() {
               width={20}
               height={20}
             />
-            <span className="text-sm">Encerrar Sessao</span>
+            <span className="text-md">Terminar Sessão</span>
           </button>
         </div>
       </div>
