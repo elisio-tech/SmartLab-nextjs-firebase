@@ -7,6 +7,7 @@ export default function page() {
   return (
     <div className="mt-24 ml-70 mx-12">
       <Tab />
+      <Metrics />
     </div>
   );
 }
