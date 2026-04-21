@@ -5,9 +5,8 @@ import Metrics from "@/components/Metrics";
 
 export default function page() {
   return (
-    <div className="mt-26 ml-24 mx-12">
+    <div className="mt-24 ml-70 mx-12">
       <Tab />
-      <Metrics />
     </div>
   );
 }
