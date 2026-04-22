@@ -28,12 +28,15 @@ export default function Sidebar() {
   return (
     <aside className="fixed top-0 left-0 h-screen w-64 bg-white border-r flex flex-col justify-between">
       <div>
-        <div className="h-16 flex items-center px-6 border-b">
+        <Link
+          href={"/dashboard"}
+          className="h-16 flex items-center px-6 border-b"
+        >
           <Image src="/logo/logo.png" width={32} height={32} alt="logo" />
           <span className="ml-2 font-semibold text-gray-800 uppercase">
             Orbital
           </span>
-        </div>
+        </Link>
 
         <div className="px-4 py-6">
           <p className="text-xs text-gray-400 uppercase mb-3 px-2">Main</p>
