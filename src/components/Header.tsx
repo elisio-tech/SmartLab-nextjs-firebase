@@ -1,9 +1,11 @@
 "use client";
 
+import { useAuth } from "@/hooks/useAuth";
 import Image from "next/image";
 import React from "react";
 
 export default function Header() {
+  const { user } = useAuth();
   return (
     <header className="fixed top-0 left-64 right-0 h-16 bg-white border-b flex items-center justify-between px-6 z-10">
       <div>
@@ -20,7 +22,7 @@ export default function Header() {
             alt="notifications"
           />
 
-          <div className="absolute -top-1 -right-1 w-4 h-4 bg-orange-500 rounded-full text-[8px] text-white flex justify-center items-center">
+          <div className="absolute -top-1 -right-1 w-4 h-4 bg-error-400 rounded-full text-[8px] text-white flex justify-center items-center">
             <span>1</span>
           </div>
         </button>
@@ -38,9 +40,9 @@ export default function Header() {
 
           <div className="hidden sm:flex flex-col leading-tight">
             <span className="text-md font-medium text-gray-800">
-              Robert Fox
+              {user?.displayName}
             </span>
-            <span className="text-xs text-gray-400">robert.fox@gmail.com</span>
+            <span className="text-xs text-gray-400">{user?.email}</span>
           </div>
 
           <Image

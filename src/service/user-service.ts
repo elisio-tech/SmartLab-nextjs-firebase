@@ -6,11 +6,11 @@ import {
   getDoc,
   getDocs,
   serverTimestamp,
+  setDoc,
   updateDoc,
 } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { User } from "../types/user";
-
 const userRef = collection(db, "users");
 
 export async function getUsers(): Promise<User[]> {
@@ -22,13 +22,18 @@ export async function getUsers(): Promise<User[]> {
   }));
 }
 
-export async function createUser(data: Omit<User, "id" | "createdAt">) {
-  const docRef = await addDoc(userRef, {
+export async function createUser(
+  uid: string,
+  data: Omit<User, "id" | "createdAt">,
+) {
+  const docRef = doc(db, "users", uid);
+
+  await setDoc(docRef, {
     ...data,
-    updateAt: serverTimestamp(),
+    createdAt: serverTimestamp(),
   });
 
-  return docRef.id;
+  return uid;
 }
 
 export async function getUserByID(uid: string): Promise<User | null> {

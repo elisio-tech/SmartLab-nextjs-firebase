@@ -1,12 +1,17 @@
+"use client";
+import { useAuth } from "@/hooks/useAuth";
 import Image from "next/image";
 import React from "react";
 
 export default function Welcome() {
+  const { user, loading } = useAuth();
   return (
     <div className="mt-4">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl  text-gray-800">Welcome back, Diana 👋</h2>
+          <h2 className="text-2xl text-gray-800">
+            Welcome back, {user?.displayName || "User"} 👋
+          </h2>
           <p className="text-sm text-gray-400">
             Monitor key metrics and manage your platform
           </p>

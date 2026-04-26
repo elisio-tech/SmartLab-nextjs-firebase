@@ -2,94 +2,58 @@ import Image from "next/image";
 import React from "react";
 
 export default function Metrics() {
-  const metrics = [
+  const data = [
     {
-      name: "Analytic Balance",
-      value: 512,
-      icon: "/icons/scan.png",
-      trend: "+12%",
-      highlight: true,
+      icon: "/icons/external.png",
+      title: "Montly growin",
+      percentage: 36.4,
+      color: "bg-red-400",
     },
     {
-      name: "Pending Payouts",
-      value: 134,
       icon: "/icons/ace.png",
-      trend: "-4%",
+      title: "Clients Numbers",
+      percentage: 2.4,
+      color: "bg-blue-400",
     },
     {
-      name: "Team",
-      value: 12,
-      icon: "/icons/folder120.png",
+      icon: "/icons/eclipse.png",
+      title: "Success Cases",
+      percentage: 97.5,
+      color: "bg-emerald-200",
     },
     {
-      name: "Conversations",
-      value: 1260,
       icon: "/icons/out.png",
-      trend: "+18%",
+      title: "Return Clients",
+      percentage: 62.1,
+      color: "bg-orange-500",
     },
   ];
-
   return (
-    <div className="mt-8">
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {metrics.map((item, i) => (
-          <div
-            key={i}
-            className={`
-              p-5 border transition-all duration-300
-               hover:-translate-y-1
-              ${
-                item.highlight
-                  ? "bg-orange-400 text-white border-transparent"
-                  : "bg-white text-gray-800 border-gray-200"
-              }
-            `}
-          >
-            {/* TOP */}
-            <div className="flex items-center justify-between mb-6">
-              <div
-                className={`
-                  w-12 h-12 flex items-center justify-center rounded-xl
-                  ${item.highlight ? "bg-white/20" : "bg-gray-100"}
-                `}
-              >
-                <Image src={item.icon} width={22} height={22} alt={item.name} />
-              </div>
-
-              {item.trend && (
+    <div className="mt-4 grid grid-cols-[2fr_1fr]">
+      <div className="bg-zinc-50 p-2 rounded-md">
+        <div className="p-4 mb-8">
+          <h4 className="mb-2 text-gray-500">Total profile</h4>
+          <h1 className="mb-12 text-6xl text-zinc-700 ">1,389</h1>
+        </div>
+        <div className="grid grid-cols-4 gap-2">
+          {data.map((item, i) => (
+            <div key={i} className="bg-white rounded-md p-3">
+              <div className="flex items-center gap-2">
                 <div
-                  className={`
-                    hidden items-center gap-1 text-xs font-medium px-3 py-1.5 rounded-full
-                 
-                    transition-all duration-200 hover:scale-105
-                    ${
-                      item.trend.startsWith("+")
-                        ? "bg-green-100/90 text-orange-700 border-green-200/50 shadow-green-100/50"
-                        : "bg-red-100/90 text-red-600 border-red-200/50 shadow-red-100/50"
-                    }
-                  `}
+                  className={`w-10 h-10 flex justify-center items-center rounded-sm ${item.color}`}
                 >
-                  <span>{item.trend}</span>
+                  <Image src={item.icon} width={20} height={20} alt="image" />
                 </div>
-              )}
+                <h2 className="text-md text-gray-600">{item.title}</h2>
+              </div>
+              <h6 className="mt-4 text-2xl text-gray-500">
+                {item.percentage}%
+              </h6>
             </div>
-
-            {/* TITLE */}
-            <p
-              className={`text-2xl ${
-                item.highlight ? "text-white/80" : "text-gray-500"
-              }`}
-            >
-              {item.name}
-            </p>
-
-            {/* VALUE */}
-            <h1 className="text-3xl font-semibold mt-1">
-              {item.value.toLocaleString()}
-            </h1>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
+      <div></div>
     </div>
   );
 }

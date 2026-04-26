@@ -3,15 +3,16 @@
 import { logOut } from "@/service/auth-service";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function Sidebar() {
+  const router = useRouter();
   const pathname = usePathname();
 
   const handleSignOut = async () => {
     try {
       await logOut();
-      alert("saimos com sucesso!");
+      router.push("/login");
     } catch (err) {
       console.log("Erro ao sair", err);
     }
